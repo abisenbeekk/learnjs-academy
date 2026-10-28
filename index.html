@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnJS Academy</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">🎓 LearnJS Academy</div>
+        <nav>
+            <a href="#home" class="active-link">Home</a>
+            <a href="#courses-section">Courses</a>
+            <a href="#register">Register</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+            <a href="#interactive-features">Features</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero page-section active">
+        <h1>Learn JavaScript from Scratch</h1>
+        <p>Join thousands of students learning modern JavaScript</p>
+        <button id="heroBtn" class="btn-primary">Enroll Now</button>
+
+        <!-- Home карточкалары -->
+        <div class="home-card-container">
+            <div class="home-card">
+                <h3>🚀 Interactive Learning</h3>
+                <p>Master JavaScript through hands-on DOM manipulation, events, and modern ES6+ features.</p>
+            </div>
+            
+            <div class="home-card">
+                <h3>💡 Real Projects</h3>
+                <p>Build real-world web applications, forms, filters, and dynamic user interfaces from scratch.</p>
+            </div>
+            
+            <div class="home-card">
+                <h3>🎓 Certified Skills</h3>
+                <p>Complete all course assignments and validate your frontend development capabilities.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section page-section" id="courses-section">
+        <h2>📚 Available Courses & Filtering</h2>
+        <p class="subtitle">Filter courses by category (Array & Higher-Order Functions)</p>
+        
+        <div style="margin-bottom: 20px; display: flex; gap: 10px;">
+            <button class="btn-primary filter-btn" data-category="all">All</button>
+            <button class="btn-primary filter-btn" data-category="beginner">Beginner</button>
+            <button class="btn-primary filter-btn" data-category="advanced">Advanced</button>
+        </div>
+
+        <div id="coursesContainer" style="display: grid; gap: 12px;">
+        </div>
+    </section>
+
+    <section id="register" class="section page-section">
+        <h2>📝 Course Registration</h2>
+        <p class="subtitle">Fill in the form to register for our JavaScript course</p>
+
+        <form id="regForm" novalidate>
+            <div class="form-group">
+                <label for="username">Full Name *</label>
+                <input type="text" id="username" placeholder="John Doe">
+                <span class="error" id="nameError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="text" id="email" placeholder="john@example.com">
+                <span class="error" id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password * (min 8 characters)</label>
+                <input type="password" id="password" placeholder="••••••••">
+                <span class="error" id="passwordError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password *</label>
+                <input type="password" id="confirmPassword" placeholder="••••••••">
+                <span class="error" id="confirmError"></span>
+            </div>
+
+            <button type="submit" class="btn-primary">Register</button>
+            <p id="successMsg" class="success"></p>
+        </form>
+    </section>
+
+    <section id="faq" class="section page-section">
+        <h2>❓ Frequently Asked Questions</h2>
+        <p class="subtitle">Click on a question to see the answer</p>
+
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    What will I learn in this course?
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p>You will learn JavaScript basics, DOM manipulation, event handling, ES6 features, and how to build interactive web applications.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    How long is the course?
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p>The course lasts 12 weeks with 3 lessons per week. Each lesson takes about 2 hours.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    Do I need prior programming experience?
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p>No! The course is designed for absolute beginners. We start from the very basics.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    Will I get a certificate?
+                    <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p>Yes, after completing all assignments and the final project, you will receive a certificate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section page-section">
+        <h2>📬 Stay Updated & Interactive Features</h2>
+        <p class="subtitle">Subscribe to get notified about new courses</p>
+        <button id="openPopup" class="btn-primary" style="margin-bottom: 25px;">Subscribe to Newsletter</button>
+
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; width: 100%;">
+            <h2>🎨 Try Different Themes</h2>
+            <p class="subtitle">Click the button to change the background color</p>
+            <button id="colorBtn" class="btn-primary" style="margin-bottom: 25px;">Change Background Color</button>
+        </div>
+
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; width: 100%;">
+            <h2>⏰ Current Date and Time</h2>
+            <p class="subtitle">Next live session starts soon</p>
+            <div id="datetimeBox" class="datetime-box">Loading...</div>
+        </div>
+    </section>
+
+    <section class="section page-section" id="interactive-features">
+        <h2>⚡ Extra JavaScript Features</h2>
+        <p class="subtitle">Interactive elements required for assignments</p>
+
+        <div style="margin-bottom: 25px; text-align: left; width: 100%;">
+            <h3>📖 Read More Toggle</h3>
+            <p id="shortText">Learn JavaScript basics and build amazing web apps...</p>
+            <p id="moreText" style="display: none; color: #555;">Advanced topics include DOM manipulation, ES6 features, asynchronous programming, APIs, and single-page application (SPA) architectures!</p>
+            <button id="readMoreBtn" class="btn-primary" style="margin-top: 10px;">Read More</button>
+        </div>
+
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; text-align: left; width: 100%;">
+            <h3>💡 Random JavaScript Fact</h3>
+            <div id="factBox" style="background: #f1f5f9; padding: 15px; border-radius: 8px; margin: 10px 0; color: #333;">
+                Click the button to generate a cool JS fact!
+            </div>
+            <button id="factBtn" class="btn-primary">Get New Fact</button>
+        </div>
+    </section>
+
+    <div id="popupOverlay" class="popup-overlay">
+        <div class="popup-box">
+            <span class="close-btn" id="closePopup">&times;</span>
+            <h3>📧 Subscribe to Newsletter</h3>
+            <p>Get the latest news about JavaScript courses</p>
+            <form id="subscribeForm">
+                <input type="text" id="subName" placeholder="Your Name" required>
+                <input type="email" id="subEmail" placeholder="Your Email" required>
+                <button type="submit" class="btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Student:</strong> Bissenbek Ayaulym</p>
+        <p><strong>Group:</strong> SE-2505</p>
+        <p>&copy; 2026 LearnJS Academy. All rights reserved.</p>
+    </footer>
+
+    <script src="js/sound.js"></script>
+    <script src="js/courses.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/accordion.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/datetime.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/interactive.js"></script>
+</body>
+</html>

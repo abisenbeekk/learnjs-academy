@@ -627,7 +627,6 @@ footer p {
     margin: 3px 0;
 }
 
-/* Theme toggle үшін қараңғы режим */
 body.dark-theme {
     background-color: #202633;
     color: #e8edf5;

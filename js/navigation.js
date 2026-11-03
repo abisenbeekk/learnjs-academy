@@ -1,44 +1,44 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('header nav a');
-    const sections = document.querySelectorAll('.page-section');
-    const heroBtn = document.getElementById('heroBtn');
+$(document).ready(function () {
+    const $navLinks = $("header nav a");
+    const $sections = $(".page-section");
 
     function showSection(targetId) {
-        sections.forEach(section => {
-            section.classList.remove('active');
-        });
-
-        let targetSection = document.getElementById(targetId);
-        if (!targetSection && targetId === 'courses') {
-            targetSection = document.getElementById('courses-section');
+        // courses сілтемесін курстар бөліміне бағыттау
+        if (targetId === "courses") {
+            targetId = "courses-section";
         }
 
-        if (targetSection) {
-            targetSection.classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        const $targetSection = $("#" + targetId);
+
+        if (!$targetSection.length) {
+            return;
         }
 
-        navLinks.forEach(link => {
-            const href = link.getAttribute('href').replace('#', '');
-            if (href === targetId || (href === 'courses-section' && targetId === 'courses')) {
-                link.classList.add('active-link');
-            } else {
-                link.classList.remove('active-link');
-            }
+        $sections.removeClass("active");
+        $targetSection.addClass("active");
+
+        $navLinks.each(function () {
+            const linkTarget = $(this).attr("href").replace("#", "");
+            const matchesTarget =
+                linkTarget === targetId ||
+                (linkTarget === "courses-section" && targetId === "courses");
+
+            $(this).toggleClass("active-link", matchesTarget);
         });
+
+        $("html, body").stop().animate({ scrollTop: 0 }, 400);
     }
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').replace('#', '');
-            showSection(targetId);
-        });
+    // Навигациядағы сілтемелер
+    $navLinks.on("click", function (event) {
+        event.preventDefault();
+
+        const targetId = $(this).attr("href").replace("#", "");
+        showSection(targetId);
     });
 
-    if (heroBtn) {
-        heroBtn.addEventListener('click', () => {
-            showSection('register');
-        });
-    }
+    // Басты беттегі Enroll Now батырмасы
+    $("#heroBtn").on("click", function () {
+        showSection("register");
+    });
 });

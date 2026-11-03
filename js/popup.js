@@ -1,46 +1,70 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const openBtn       = document.getElementById("openPopup");
-    const heroBtn       = document.getElementById("heroBtn");
-    const closeBtn      = document.getElementById("closePopup");
-    const overlay       = document.getElementById("popupOverlay");
-    const subscribeForm = document.getElementById("subscribeForm");
+$(document).ready(function () {
+    const $overlay = $("#popupOverlay");
+    const $subscribeForm = $("#subscribeForm");
 
-    
+    if (!$overlay.length) return;
+
     function openPopup() {
-        overlay.classList.add("active");
+        $overlay.addClass("active");
+        $("#subName").trigger("focus");
     }
 
     function closePopup() {
-        overlay.classList.remove("active");
+        $overlay.removeClass("active");
     }
 
-    openBtn.addEventListener("click", openPopup);
+    function showPopupMessage(message) {
+        const $toast = $("#toast");
 
-    heroBtn.addEventListener("click", openPopup);
+        if (!$toast.length) {
+            alert(message);
+            return;
+        }
 
-    closeBtn.addEventListener("click", closePopup);
+        $toast
+            .stop(true, true)
+            .text(message)
+            .fadeIn(200);
 
-    overlay.addEventListener("click", function (e) {
-        if (e.target === overlay) {
+        setTimeout(function () {
+            $toast.fadeOut(300);
+        }, 3000);
+    }
+
+    // Popup-ты ашу
+    $("#openPopup, #heroBtn").on("click", openPopup);
+
+    // Жабу батырмасы
+    $("#closePopup").on("click", closePopup);
+
+    // Popup сыртын басқанда жабу
+    $overlay.on("click", function (event) {
+        if (event.target === this) {
             closePopup();
         }
     });
 
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && overlay.classList.contains("active")) {
+    // Escape пернесімен жабу
+    $(document).on("keydown", function (event) {
+        if (event.key === "Escape" && $overlay.hasClass("active")) {
             closePopup();
         }
     });
 
-    subscribeForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const name  = document.getElementById("subName").value.trim();
-        const email = document.getElementById("subEmail").value.trim();
+    // Newsletter формасын жіберу
+    $subscribeForm.on("submit", function (event) {
+        event.preventDefault();
 
-        if (name && email) {
-            alert("🎉 Thank you, " + name + "! You are subscribed.");
-            subscribeForm.reset();
-            closePopup();
+        const name = $("#subName").val().trim();
+        const email = $("#subEmail").val().trim();
+
+        if (!name || !email) {
+            showPopupMessage("Please enter your name and email.");
+            return;
         }
+
+        this.reset();
+        closePopup();
+        showPopupMessage("Thank you, " + name + "! You are subscribed.");
     });
 });

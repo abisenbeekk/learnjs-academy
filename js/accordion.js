@@ -1,23 +1,22 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const headers = document.querySelectorAll(".accordion-header");
+$(document).ready(function () {
+    $(document).on("click", ".accordion-header", function () {
+        const $header = $(this);
+        const $content = $header.next(".accordion-content");
+        const isAlreadyOpen = $header.hasClass("active");
 
-    headers.forEach(function (header) {
-        header.addEventListener("click", function () {
-            const content = this.nextElementSibling;
+        // Басқа ашық жауаптарды жабу
+        $(".accordion-header").not($header)
+            .removeClass("active")
+            .attr("aria-expanded", "false");
 
-            document.querySelectorAll(".accordion-content").forEach(function (item) {
-                if (item !== content) {
-                    item.classList.remove("active");
-                }
-            });
-            document.querySelectorAll(".accordion-header").forEach(function (h) {
-                if (h !== header) {
-                    h.classList.remove("active");
-                }
-            });
+        $(".accordion-content").not($content)
+            .removeClass("active");
 
-            content.classList.toggle("active");
-            header.classList.toggle("active");
-        });
+        // Таңдалған жауапты ашу немесе жабу
+        $header
+            .toggleClass("active", !isAlreadyOpen)
+            .attr("aria-expanded", String(!isAlreadyOpen));
+
+        $content.toggleClass("active", !isAlreadyOpen);
     });
 });

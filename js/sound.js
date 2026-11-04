@@ -8,7 +8,6 @@ $(document).ready(function () {
 
             if (!AudioContextClass) return;
 
-            // AudioContext-ийг нэг удаа үүсгэнэ
             if (!audioContext) {
                 audioContext = new AudioContextClass();
             }
@@ -39,7 +38,6 @@ $(document).ready(function () {
         }
     }
 
-    // Дараа нь нэмэгдсэн товчлууруудад ч үйлчилнэ
     $(document).on("click", "button", function () {
         playClickSound();
     });

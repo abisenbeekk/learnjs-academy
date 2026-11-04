@@ -65,7 +65,6 @@ $(document).ready(function () {
             $container.append($card);
         });
 
-        // Егер іздеу сұрауы бар болса, оны жаңа карталарға да қолдану
         $("#searchInput").trigger("input");
     }
 
@@ -79,10 +78,8 @@ $(document).ready(function () {
         });
     }
 
-    // Барлық курсты бастапқыда көрсету
     displayCourses(courses);
 
-    // Санат бойынша сүзу
     $(".filter-btn").on("click", function () {
         const category = $(this).data("category");
         const filteredCourses = getCoursesByCategory(category);

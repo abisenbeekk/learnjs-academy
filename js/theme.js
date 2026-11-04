@@ -8,7 +8,6 @@ $(document).ready(function () {
     function applyTheme(theme) {
         const isDark = theme === "dark";
 
-        // background.js қойған фон түсін тазалап, режимді қосу
         $("body")
             .css("background-color", "")
             .toggleClass("dark-theme", isDark);

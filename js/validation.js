@@ -21,7 +21,6 @@ $(document).ready(function () {
         const $passwordInput = $("#password");
         const $confirmInput = $("#confirmPassword");
 
-        // Алдыңғы қателерді тазалау
         $nameError.text("");
         $emailError.text("");
         $passwordError.text("");
@@ -32,7 +31,6 @@ $(document).ready(function () {
 
         let isValid = true;
 
-        // Аты-жөнін тексеру
         if (name === "") {
             $nameError.text("⚠ Name is required.");
             $nameInput.addClass("input-error");
@@ -43,7 +41,6 @@ $(document).ready(function () {
             isValid = false;
         }
 
-        // Электрондық поштаны тексеру
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (email === "") {
@@ -56,7 +53,6 @@ $(document).ready(function () {
             isValid = false;
         }
 
-        // Құпиясөзді тексеру
         if (password === "") {
             $passwordError.text("⚠ Password is required.");
             $passwordInput.addClass("input-error");
@@ -67,7 +63,6 @@ $(document).ready(function () {
             isValid = false;
         }
 
-        // Құпиясөзді растауды тексеру
         if (confirmPassword === "") {
             $confirmError.text("⚠ Please confirm your password.");
             $confirmInput.addClass("input-error");
@@ -78,7 +73,6 @@ $(document).ready(function () {
             isValid = false;
         }
 
-        // Деректер дұрыс болса, жүктеу күйін көрсету
         if (isValid) {
             const $button = $form.find('button[type="submit"]');
             const originalButtonText = $button.text();
@@ -98,7 +92,6 @@ $(document).ready(function () {
                     "✅ Registration successful! Welcome to LearnJS Academy!"
                 );
 
-                // Assignment 6 ішіндегі toast хабарламасын көрсету
                 $("#toast")
                     .stop(true, true)
                     .text("Form submitted successfully!")

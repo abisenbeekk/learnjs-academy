@@ -1,8 +1,6 @@
 $(document).ready(function () {
-    // 0. jQuery ажиллаж байгааг шалгах
     console.log("jQuery is ready!");
 
-    // 1–2. Жедел іздеу және автотолтыру
     const suggestions = [
         "JavaScript Fundamentals",
         "Advanced DOM Manipulation",
@@ -13,13 +11,11 @@ $(document).ready(function () {
     $("#searchInput").on("input", function () {
         const value = $(this).val().trim().toLowerCase();
 
-        // Іздеу сұрауына сәйкес элементтерді көрсету
         $(".search-item").each(function () {
             const itemText = $(this).text().toLowerCase();
             $(this).toggle(itemText.includes(value));
         });
 
-        // Сәйкес ұсыныстарды көрсету
         const matches = value
             ? suggestions.filter(function (item) {
                   return item.toLowerCase().includes(value);
@@ -38,13 +34,11 @@ $(document).ready(function () {
         $list.toggle(matches.length > 0);
     });
 
-    // Ұсынысты таңдағанда оны іздеу өрісіне жазу
     $(document).on("click", ".s-item", function () {
         $("#searchInput").val($(this).text()).trigger("input");
         $("#suggestionsList").hide();
     });
 
-    // 3. FAQ ішіндегі ізделген сөздерді белгілеу
     $("#highlightSearch").on("input", function () {
         const query = $(this).val().trim();
 
@@ -79,7 +73,6 @@ $(document).ready(function () {
         });
     });
 
-    // 4. Бетті айналдыру прогресс жолағы
     function updateScrollProgress() {
         const scrollTop = $(window).scrollTop();
         const maxScroll = $(document).height() - $(window).height();
@@ -90,7 +83,6 @@ $(document).ready(function () {
         $("#scroll-progress").css("width", percentage + "%");
     }
 
-    // 5. Көрінген кезде санды анимациялап санау
     let counterStarted = false;
 
     function animateCounter() {
@@ -131,7 +123,6 @@ $(document).ready(function () {
         }
     }
 
-    // Toast хабарламасын көрсету
     let toastTimer;
 
     function showToast(message) {
@@ -153,7 +144,6 @@ $(document).ready(function () {
         }, 3000);
     }
 
-    // 6. Форма жіберілгенде жүктеу индикаторын көрсету
     $("#submitForm").on("submit", function (event) {
         event.preventDefault();
 
@@ -178,12 +168,10 @@ $(document).ready(function () {
         }, 1500);
     });
 
-    // 7. Уведомлениены көрсету батырмасы
     $("#toastBtn").on("click", function () {
         showToast("Action confirmed!");
     });
 
-    // 8. Мәтінді алмасу буферіне көшіру
     $("#copyBtn").on("click", async function () {
         const $copyText = $("#copyText");
 
@@ -217,7 +205,6 @@ $(document).ready(function () {
         }, 2000);
     });
 
-    // 9. Load images only when they are visible or close to the viewport
     function loadVisibleImages() {
         const screenBottom = $(window).scrollTop() + $(window).height();
 
@@ -232,14 +219,12 @@ $(document).ready(function () {
         });
     }
 
-    // Бетті айналдырғанда функцияларды жаңарту
     $(window).on("scroll", function () {
         updateScrollProgress();
         animateCounter();
         loadVisibleImages();
     });
 
-    // Recheck counters and images after their sections are opened
     $(document).on(
         "click",
         'header nav a[href="#jquery-features"], header nav a[href="#lazy-gallery"]',
@@ -252,7 +237,6 @@ $(document).ready(function () {
         }
     );
 
-    // Бет алғаш ашылғанда тексеру
     updateScrollProgress();
     animateCounter();
     loadVisibleImages();

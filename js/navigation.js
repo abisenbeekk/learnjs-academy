@@ -3,7 +3,6 @@ $(document).ready(function () {
     const $sections = $(".page-section");
 
     function showSection(targetId) {
-        // courses сілтемесін курстар бөліміне бағыттау
         if (targetId === "courses") {
             targetId = "courses-section";
         }
@@ -29,7 +28,6 @@ $(document).ready(function () {
         $("html, body").stop().animate({ scrollTop: 0 }, 400);
     }
 
-    // Навигациядағы сілтемелер
     $navLinks.on("click", function (event) {
         event.preventDefault();
 
@@ -37,7 +35,6 @@ $(document).ready(function () {
         showSection(targetId);
     });
 
-    // Басты беттегі Enroll Now батырмасы
     $("#heroBtn").on("click", function () {
         showSection("register");
     });

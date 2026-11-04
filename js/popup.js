@@ -31,27 +31,22 @@ $(document).ready(function () {
         }, 3000);
     }
 
-    // Popup-ты ашу
     $("#openPopup, #heroBtn").on("click", openPopup);
 
-    // Жабу батырмасы
     $("#closePopup").on("click", closePopup);
 
-    // Popup сыртын басқанда жабу
     $overlay.on("click", function (event) {
         if (event.target === this) {
             closePopup();
         }
     });
 
-    // Escape пернесімен жабу
     $(document).on("keydown", function (event) {
         if (event.key === "Escape" && $overlay.hasClass("active")) {
             closePopup();
         }
     });
 
-    // Newsletter формасын жіберу
     $subscribeForm.on("submit", function (event) {
         event.preventDefault();
 

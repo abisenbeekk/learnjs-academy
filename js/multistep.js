@@ -4,14 +4,12 @@ $(document).ready(function () {
     function initMultiStepForm() {
         const $steps = $(".form-step");
 
-        // Multi-step form жоқ болса, функцияны тоқтату
         if (!$steps.length) {
             return;
         }
 
         const $form = $steps.first().closest("form");
 
-        // Батырмаларды multi-step form ішінен іздеу
         const $nextBtn = $form.find('[id="nextBtn"]');
         const $backBtn = $form.find('[id="backBtn"]');
         const $submitBtn = $form.find('[id="submitBtn"]');
